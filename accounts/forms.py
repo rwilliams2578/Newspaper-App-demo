@@ -7,6 +7,12 @@ class CustomUserCreationForm(UserCreationForm):
     """Custom User Creation Form"""
 
     class Meta(UserCreationForm):
+        """Dis Meta class."""
+
+        # This is the Meta class. It contains information
+        # about how to get an instance of the class created.
+        # It is not common to use this, but Django does for
+        # certain things. Like this.
         model = CustomUser
         fields = UserCreationForm.Meta.fields + ("age",)
 
@@ -15,5 +21,7 @@ class CustomUserChangeForm(UserChangeForm):
     """Custom User Change Form"""
 
     class Meta:
+        """Dis meta"""
+
         model = CustomUser
         fields = UserChangeForm.Meta.fields
