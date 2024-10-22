@@ -14,7 +14,12 @@ class CustomUserCreationForm(UserCreationForm):
         # It is not common to use this, but Django does for
         # certain things. Like this.
         model = CustomUser
-        fields = UserCreationForm.Meta.fields + ("age",)
+        fields = UserCreationForm.Meta.fields + (
+            "username",
+            "age",
+            "email",
+            # No need for password as it is required
+        )
 
 
 class CustomUserChangeForm(UserChangeForm):
@@ -24,4 +29,8 @@ class CustomUserChangeForm(UserChangeForm):
         """Dis meta"""
 
         model = CustomUser
-        fields = UserChangeForm.Meta.fields
+        fields = (
+            "username",
+            "age",
+            "email",
+        )
