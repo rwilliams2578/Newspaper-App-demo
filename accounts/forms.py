@@ -14,7 +14,7 @@ class CustomUserCreationForm(UserCreationForm):
         # It is not common to use this, but Django does for
         # certain things. Like this.
         model = CustomUser
-        fields = UserCreationForm.Meta.fields + (
+        fields = (
             "username",
             "age",
             "email",

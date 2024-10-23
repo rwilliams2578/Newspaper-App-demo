@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third Party
-    "crispy_forms.",
+    "crispy_forms",
     "crispy_bootstrap5",
     # Local First Party
     "accounts.apps.AccountsConfig",
