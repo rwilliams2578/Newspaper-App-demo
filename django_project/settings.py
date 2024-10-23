@@ -31,12 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Provided
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third Party
+    "crispy_forms.",
+    "crispy_bootstrap5",
+    # Local First Party
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
 ]
@@ -130,3 +135,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Login and logout redirect URLs
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
+
+# Crispy Forms Settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
