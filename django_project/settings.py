@@ -136,8 +136,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
-# Email Settings
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# Email settings.
+# These will send all emails to the Inbucket tool.
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "barnesbrothers.net"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+EMAIL_PORT = 2500
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
 
 # Crispy Forms Settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
