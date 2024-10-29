@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Local First Party
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
+    "articles.apps.ArticlesConfig",
 ]
 
 MIDDLEWARE = [
@@ -114,7 +115,7 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/New_York"
 
 USE_I18N = True
 
