@@ -9,6 +9,13 @@
     <p>{{ object.body }}</p>
   </div>
 
+  <hr>
+  <h4>Comments</h4>
+  {% for comment in article.comments.all %}
+     <p>{{ comment.author }} &middot; {{ comment.text }}</p>
+   {% endfor %}
+   <hr>
+
   {% if article.author == user %}
   <p>
     <a href="{% url 'article_edit' article.pk %}">Edit</a> |
