@@ -76,3 +76,12 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         obj = self.get_object()
         return obj.author == self.request.user
+
+
+class ArticleLikeView(LoginRequiredMixin, View):
+    """Article Like View"""
+
+    # TODO: Finish this.
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponse("works")
