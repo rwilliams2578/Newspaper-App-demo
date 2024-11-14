@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
@@ -83,7 +83,30 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class ArticleLikeView(LoginRequiredMixin, View):
     """Article Like View"""
 
-    # TODO: Finish this.
-
     def get(self, request, *args, **kwargs):
-        return HttpResponse("works")
+        """Get Request"""
+
+        # Get out the data from the Get request
+        article_id = request.GET.get("article_id", None)
+        article_action = request.GET.get("article_action", None)
+
+        if not article_id or not article_action:
+            return JsonResponse(
+                {
+                    "success": False,
+                }
+            )
+
+        article = Article.objects.get(id=article_id)
+        if article_action == "like":
+            # Do like stuff
+            article.likes.add(request.user)
+        else:
+            # Do unlike stuff
+            article.likes.remove(request.user)
+
+        return JsonResponse(
+            {
+                "success": True,
+            }
+        )

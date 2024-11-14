@@ -20,6 +20,27 @@ $(document).ready(function () {
             },
         }).done(function (data) {
             // Do completion work here.
+            if (data.success) {
+                // If we liked, update elements to match.
+                if (article_action == 'like') {
+                    // Do like
+                    target.removeClass('btn-outline-primary');
+                    target.addClass('btn-primary');
+                    like_icon.removeClass('bi-hand-thumbs-up-');
+                    like_icon.addClass('bi-hand-thumbs-up-fill');
+                    like_count.html(Number(like_count.html()) + 1);
+                    target.data('action', 'unlike');
+                } else {
+                    // Do unlike
+                    target.removeClass('btn-primary');
+                    target.addClass('btn-outline-primary');
+                    like_icon.removeClass('bi-hand-thumbs-up-fill');
+                    like_icon.addClass('bi-hand-thumbs-up-');
+                    like_count.html(Number(like_count.html()) - 1);
+                    target.data('action', 'like');
+                }
+
+            }
         });
     });
 });
