@@ -85,7 +85,6 @@ class ArticleLikeView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         """Get Request"""
-
         # Get out the data from the Get request
         article_id = request.GET.get("article_id", None)
         article_action = request.GET.get("article_action", None)

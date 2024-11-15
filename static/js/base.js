@@ -12,6 +12,7 @@ $(document).ready(function () {
         let like_icon = target.find('.like_icon');
         let like_count = target.find('.like_count');
 
+        // Make ajax request to article url sending article id and action
         $.ajax({
             url: article_like_url,
             data: {
@@ -22,11 +23,11 @@ $(document).ready(function () {
             // Do completion work here.
             if (data.success) {
                 // If we liked, update elements to match.
-                if (article_action == 'like') {
+                if (article_action === 'like') {
                     // Do like
                     target.removeClass('btn-outline-primary');
                     target.addClass('btn-primary');
-                    like_icon.removeClass('bi-hand-thumbs-up-');
+                    like_icon.removeClass('bi-hand-thumbs-up');
                     like_icon.addClass('bi-hand-thumbs-up-fill');
                     like_count.html(Number(like_count.html()) + 1);
                     target.data('action', 'unlike');
@@ -35,7 +36,7 @@ $(document).ready(function () {
                     target.removeClass('btn-primary');
                     target.addClass('btn-outline-primary');
                     like_icon.removeClass('bi-hand-thumbs-up-fill');
-                    like_icon.addClass('bi-hand-thumbs-up-');
+                    like_icon.addClass('bi-hand-thumbs-up');
                     like_count.html(Number(like_count.html()) - 1);
                     target.data('action', 'like');
                 }
