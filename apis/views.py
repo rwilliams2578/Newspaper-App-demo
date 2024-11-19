@@ -7,43 +7,47 @@ from articles.models import Article, Comment
 
 class ApiArticleListView(LoginRequiredMixin, View):
     """Article List View"""
+
     def get(self, request, *args, **kwargs):
         """Get Request"""
-        articles = list(Article.objects.values())
-        return JsonResponse(articles, safe=False)
+        article = list(Article.objects.values())
+        return JsonResponse(article, safe=False)
+
 
 class ApiArticleDetailView(LoginRequiredMixin, View):
     """Article Detail View"""
+
     def get(self, request, article_pk, *args, **kwargs):
         """Get Request"""
-        article = Article.objects.values().get(pk=article_pk))
-        comments = list(
-            Comment.objects.filter(article_id=article_pk).values(),
+        article = Article.objects.values().get(
+            pk=article_pk,
         )
-        article["comments"] = comments
+        comment = list(
+            Comment.objects.filter(
+                article_pk=article_pk,
+            ).values()
+        )
         return JsonResponse(article, safe=False)
+
 
 class ApiCommentListView(LoginRequiredMixin, View):
     """Comment List View"""
 
     def get(self, request, article_pk, *args, **kwargs):
         """Get Request"""
-        comments = list(
-            Comment.objects.filter(article_id=article_pk).values(),
+        comment = list(
+            Comment.objects.filter(
+                article_id=article_pk,
+            ).values(),
         )
-        return JsonResponse(comments, safe=False)
+        return JsonResponse(comment, safe=False)
+
 
 class ApiCommentDetailView(LoginRequiredMixin, View):
     """Comment Detail View"""
 
     def get(self, request, article_pk, comment_pk, *args, **kwargs):
-        comment = Comment.objects.values().get(pk=comment_pk)
-        return JsonResponse(comment, safe=False)
-
-class ApiCommentListView(LoginRequiredMixin, View):
-    """Comment List View"""
-
-    def get(self, request, article_pk, *args, **kwargs):
-        """Get Request"""
-        comment = Comment.objects.values().get(pk=comment_pk)
+        comment = Comment.objects.values().get(
+            pk=comment_pk,
+        )
         return JsonResponse(comment, safe=False)
